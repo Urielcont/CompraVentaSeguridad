@@ -5,7 +5,7 @@ import userRouter from "./routes/userRoutes"
 import carroRouter from "./routes/carrosRoutes";
 import { testConnection } from "./config/configDb";
 // import morgan from "morgan";
-// import cors from 'cors';
+import cors from 'cors';
 // const db = require("../src/config/configDB.js"); // Importa la configuración de la base de datos
 
 // servidor de express
@@ -17,7 +17,7 @@ app.use(express.json());
 // Rutas
 app.use("/api/users", userRouter);
 app.use("/api/carros", carroRouter);
-
+app.use(cors());
 // PRUEBA
 app.get("/", (req, res) => {
   res.send("Servidor funcionando");
