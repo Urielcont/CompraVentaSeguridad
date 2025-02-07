@@ -3,6 +3,7 @@ loadEnv()
 import express from "express";
 import userRouter from "./routes/userRoutes"
 import carroRouter from "./routes/carrosRoutes";
+import { testConnection } from "./config/configDb";
 // import morgan from "morgan";
 // import cors from 'cors';
 // const db = require("../src/config/configDB.js"); // Importa la configuración de la base de datos
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 // Funcion para inicar el servidor en el puerto establecido
 const startServerExpress = async () => {
+  await testConnection();
   try {
     app.listen(process.env.PORT, () => {
       console.log("Servidor listo en el puerto: ",process.env.PORT);
