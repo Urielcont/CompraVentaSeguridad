@@ -11,13 +11,20 @@ import cors from 'cors';
 // servidor de express
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:3000", // URL de tu frontend
+    credentials: true, // Permite cookies y tokens en las solicitudes
+    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
+  })
+);
+
 // Middleware del servidor
 app.use(express.json());
 
 // Rutas
 app.use("/api/users", userRouter);
 app.use("/api/carros", carroRouter);
-app.use(cors());
 // PRUEBA
 app.get("/", (req, res) => {
   res.send("Servidor funcionando");
